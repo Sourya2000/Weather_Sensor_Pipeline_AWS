@@ -78,7 +78,7 @@ Three PostgreSQL tables are implemented:
 2.  sensor_aggregates -- Stores per-file statistics\
 3.  quarantine_log -- Stores invalid rows with error details
 
-4.  
+   
 ![RDS access locally ](rds_insertion.PNG)
 ------------------------------------------------------------------------
 
