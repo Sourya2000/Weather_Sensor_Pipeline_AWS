@@ -1,8 +1,0 @@
-pgcli "host=sensor-db.cv060w0ciem0.eu-north-1.rds.amazonaws.com port=5432 dbname=postgres user=postgres sslmode=require password=YourActualPassword"
-  
-    "QueueUrl": "https://eu-north-1.queue.amazonaws.com/175742720436/sensor-processing-queue"
-}
-
-sensor-db.cv060w0ciem0.eu-north-1.rds.amazonaws.com
-
-arn:aws:iam::aws:policy/AmazonS3FullAccess
