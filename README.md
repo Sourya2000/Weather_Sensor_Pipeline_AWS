@@ -123,9 +123,22 @@ Test File: weather.csv (\~96,453 rows)
 
 ## Local Setup
 
-git clone https://github.com/Sourya2000/Weather_Sensor_Pipeline_AWS.git\
-cd Weather_Sensor_Pipeline_AWS\
-pip install -r requirements.txt\
+# Clone the repo
+git clone https://github.com/Sourya2000/Weather_Sensor_Pipeline_AWS.git
+
+# Navigate into the project
+cd Weather_Sensor_Pipeline_AWS
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Create a local data directory
+mkdir data
+
+# Copy your CSV file into the local data folder
+cp weather.csv data/
+
+# Run the file watcher
 python file_watcher.py
 
 ------------------------------------------------------------------------
