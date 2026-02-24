@@ -228,3 +228,4 @@ if __name__ == "__main__":
     
     observer.join()
     logger.info("✅ File watcher stopped cleanly")
+    
