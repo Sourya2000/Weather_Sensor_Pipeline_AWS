@@ -78,6 +78,8 @@ Three PostgreSQL tables are implemented:
 2.  sensor_aggregates -- Stores per-file statistics\
 3.  quarantine_log -- Stores invalid rows with error details
 
+   
+![RDS access locally ](rds_insertion.PNG)
 ------------------------------------------------------------------------
 
 # 🔄 Data Processing Workflow
@@ -91,6 +93,10 @@ Three PostgreSQL tables are implemented:
 7.  File archived to processed/
 8.  Notification sent via SQS
 
+
+
+
+![S3 files after lambda function called](files_sensor_pipeline.PNG)
 ------------------------------------------------------------------------
 
 # 📊 Performance Metrics
