@@ -91,6 +91,10 @@ Three PostgreSQL tables are implemented:
 7.  File archived to processed/
 8.  Notification sent via SQS
 
+
+
+
+![S3 files after lambda function called](files_sensor_pipeline.PNG)
 ------------------------------------------------------------------------
 
 # 📊 Performance Metrics
