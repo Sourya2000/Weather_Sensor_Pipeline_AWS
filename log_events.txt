@@ -1,0 +1,231 @@
+timestamp,message
+1771936443677,"INIT_START Runtime Version: python:3.12.mainlinev2.v3	Runtime Version ARN: arn:aws:lambda:eu-north-1::runtime:27990c3d0965bea97240f3380b8d623b692705303bbde4c31fb02fa7daa05453
+"
+1771936446377,"[INFO]	2026-02-24T12:34:06.377Z		Found credentials in environment variables.
+"
+1771936446624,"[INFO]	2026-02-24T12:34:06.624Z		Configured SQS URL: https://eu-north-1.queue.amazonaws.com/175742720436/sensor-processing-queue
+"
+1771936446629,"START RequestId: 14499b46-3b6c-44df-8543-ae56624497f3 Version: $LATEST
+"
+1771936446629,"[INFO]	2026-02-24T12:34:06.629Z	14499b46-3b6c-44df-8543-ae56624497f3	⚡ Lambda function started with timeout: 300.0 seconds
+"
+1771936446630,"[INFO]	2026-02-24T12:34:06.630Z	14499b46-3b6c-44df-8543-ae56624497f3	Event: {""Records"": [{""eventVersion"": ""2.1"", ""eventSource"": ""aws:s3"", ""awsRegion"": ""eu-north-1"", ""eventTime"": ""2026-02-24T12:34:01.813Z"", ""eventName"": ""ObjectCreated:CompleteMultipartUpload"", ""userIdentity"": {""principalId"": ""AWS:AIDASR2YVDG2O2EFCEMLL""}, ""requestParameters"": {""sourceIPAddress"": ""141.44.232.167""}, ""responseElements"": {""x-amz-request-id"": ""N4QCM35GVPPVEQA0"", ""x-amz-id-2"": ""KaQVA/sUdl1ptziRLHL4HRFjZpYhQkfdE2MCRaq3oGbIKiyii1Daw8sLBRTWl700V8XQyXxPxlOOxdQcW8+612/9yLtOnfAgnHGgZqMz/EE=""}, ""s3"": {""s3SchemaVersion"": ""1.0"", ""configurationId"": ""40e9a51f-49ec-497c-8b7c-06dfd5e4b57a"", ""bucket"": {""name"": ""sensor-pipeline-bucket-unique"", ""ownerIdentity"": {""principalId"": ""A3FRZG3YC7BPNL""}, ""arn"": ""arn:aws:s3:::sensor-pipeline-bucket-unique""}, ""object"": {""key"": ""incoming/weather.csv"", ""size"": 16294377, ""eTag"": ""b967984aab91bfb83bfb1e93db329636-2"", ""sequencer"": ""00699D9AB057AA1724""}}}]}
+"
+1771936446630,"[INFO]	2026-02-24T12:34:06.630Z	14499b46-3b6c-44df-8543-ae56624497f3	📥 Processing file: s3://sensor-pipeline-bucket-unique/incoming/weather.csv
+"
+1771936446706,"[INFO]	2026-02-24T12:34:06.706Z	14499b46-3b6c-44df-8543-ae56624497f3	✅ File exists in S3, proceeding to download
+"
+1771936446920,"[INFO]	2026-02-24T12:34:06.920Z	14499b46-3b6c-44df-8543-ae56624497f3	✅ Successfully downloaded file from S3
+"
+1771936447597,"[INFO]	2026-02-24T12:34:07.596Z	14499b46-3b6c-44df-8543-ae56624497f3	📊 File has 96453 rows
+"
+1771936447597,"[INFO]	2026-02-24T12:34:07.597Z	14499b46-3b6c-44df-8543-ae56624497f3	📋 CSV columns: ['Formatted Date', 'Summary', 'Precip Type', 'Temperature (C)', 'Apparent Temperature (C)', 'Humidity', 'Wind Speed (km/h)', 'Wind Bearing (degrees)', 'Visibility (km)', 'Loud Cover', 'Pressure (millibars)', 'Daily Summary']
+"
+1771936447597,"[INFO]	2026-02-24T12:34:07.597Z	14499b46-3b6c-44df-8543-ae56624497f3	🔍 First row sample: {'Formatted Date': '2006-04-01 00:00:00.000 +0200', 'Summary': 'Partly Cloudy', 'Precip Type': 'rain', 'Temperature (C)': 9.47222222222222, 'Apparent Temperature (C)': 7.388888888888887, 'Humidity': 0.89, 'Wind Speed (km/h)': 14.1197, 'Wind Bearing (degrees)': 251.0, 'Visibility (km)': 15.826300000000002, 'Loud Cover': 0.0, 'Pressure (millibars)': 1015.13, 'Daily Summary': 'Partly cloudy throughout the day.'}
+"
+1771936457699,"[INFO]	2026-02-24T12:34:17.699Z	14499b46-3b6c-44df-8543-ae56624497f3	✅ Valid rows: 96453
+"
+1771936457699,"[INFO]	2026-02-24T12:34:17.699Z	14499b46-3b6c-44df-8543-ae56624497f3	❌ Invalid rows: 0
+"
+1771936459618,"[INFO]	2026-02-24T12:34:19.618Z	14499b46-3b6c-44df-8543-ae56624497f3	📊 Aggregates: {'source_file': 'incoming/weather.csv', 'sensor_type': 'temperature_humidity', 'min_temperature': -21.822222222222223, 'max_temperature': 39.90555555555555, 'avg_temperature': 11.93267843751188, 'stddev_temperature': 9.551546320657026, 'min_humidity': 0.0, 'max_humidity': 1.0, 'avg_humidity': 0.7348989663359357, 'record_count': 96453, 'calculation_date': '2026-02-24'}
+"
+1771936459722,"[INFO]	2026-02-24T12:34:19.721Z	14499b46-3b6c-44df-8543-ae56624497f3	📊 Aggregates saved to: s3://sensor-pipeline-bucket-unique/aggregates/weather_summary.csv
+"
+1771936459788,"[INFO]	2026-02-24T12:34:19.788Z	14499b46-3b6c-44df-8543-ae56624497f3	Database connection successful
+"
+1771936461388,"[INFO]	2026-02-24T12:34:21.388Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936463019,"[INFO]	2026-02-24T12:34:23.019Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936464662,"[INFO]	2026-02-24T12:34:24.662Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936466289,"[INFO]	2026-02-24T12:34:26.289Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936467914,"[INFO]	2026-02-24T12:34:27.914Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936469514,"[INFO]	2026-02-24T12:34:29.514Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936471136,"[INFO]	2026-02-24T12:34:31.136Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936472712,"[INFO]	2026-02-24T12:34:32.712Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936474293,"[INFO]	2026-02-24T12:34:34.292Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936475847,"[INFO]	2026-02-24T12:34:35.847Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936477452,"[INFO]	2026-02-24T12:34:37.452Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936479099,"[INFO]	2026-02-24T12:34:39.099Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936480891,"[INFO]	2026-02-24T12:34:40.891Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936482719,"[INFO]	2026-02-24T12:34:42.718Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936484316,"[INFO]	2026-02-24T12:34:44.315Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936486111,"[INFO]	2026-02-24T12:34:46.111Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936487694,"[INFO]	2026-02-24T12:34:47.694Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936489280,"[INFO]	2026-02-24T12:34:49.280Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936490875,"[INFO]	2026-02-24T12:34:50.875Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936492462,"[INFO]	2026-02-24T12:34:52.461Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936494094,"[INFO]	2026-02-24T12:34:54.093Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936495690,"[INFO]	2026-02-24T12:34:55.689Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936497250,"[INFO]	2026-02-24T12:34:57.250Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936498801,"[INFO]	2026-02-24T12:34:58.801Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936500532,"[INFO]	2026-02-24T12:35:00.532Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936502158,"[INFO]	2026-02-24T12:35:02.158Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936503730,"[INFO]	2026-02-24T12:35:03.730Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936505334,"[INFO]	2026-02-24T12:35:05.334Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936506934,"[INFO]	2026-02-24T12:35:06.933Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936508553,"[INFO]	2026-02-24T12:35:08.553Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936510229,"[INFO]	2026-02-24T12:35:10.229Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936511921,"[INFO]	2026-02-24T12:35:11.921Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936513624,"[INFO]	2026-02-24T12:35:13.624Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936515275,"[INFO]	2026-02-24T12:35:15.274Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936516944,"[INFO]	2026-02-24T12:35:16.944Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936518688,"[INFO]	2026-02-24T12:35:18.688Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936520305,"[INFO]	2026-02-24T12:35:20.305Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936521936,"[INFO]	2026-02-24T12:35:21.936Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936523642,"[INFO]	2026-02-24T12:35:23.641Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936525292,"[INFO]	2026-02-24T12:35:25.291Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936526867,"[INFO]	2026-02-24T12:35:26.867Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936528496,"[INFO]	2026-02-24T12:35:28.496Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936530107,"[INFO]	2026-02-24T12:35:30.106Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936531755,"[INFO]	2026-02-24T12:35:31.755Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936533414,"[INFO]	2026-02-24T12:35:33.414Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936535032,"[INFO]	2026-02-24T12:35:35.031Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936536609,"[INFO]	2026-02-24T12:35:36.609Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936538226,"[INFO]	2026-02-24T12:35:38.226Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936539887,"[INFO]	2026-02-24T12:35:39.887Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936541540,"[INFO]	2026-02-24T12:35:41.540Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936543401,"[INFO]	2026-02-24T12:35:43.401Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936544968,"[INFO]	2026-02-24T12:35:44.968Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936546705,"[INFO]	2026-02-24T12:35:46.705Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936548337,"[INFO]	2026-02-24T12:35:48.337Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936550020,"[INFO]	2026-02-24T12:35:50.020Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936551659,"[INFO]	2026-02-24T12:35:51.659Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936553303,"[INFO]	2026-02-24T12:35:53.303Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936554983,"[INFO]	2026-02-24T12:35:54.983Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936556679,"[INFO]	2026-02-24T12:35:56.679Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936558275,"[INFO]	2026-02-24T12:35:58.274Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936559845,"[INFO]	2026-02-24T12:35:59.844Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936561599,"[INFO]	2026-02-24T12:36:01.599Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936563173,"[INFO]	2026-02-24T12:36:03.173Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936564815,"[INFO]	2026-02-24T12:36:04.815Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936566414,"[INFO]	2026-02-24T12:36:06.414Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936568027,"[INFO]	2026-02-24T12:36:08.027Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936569627,"[INFO]	2026-02-24T12:36:09.627Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936571240,"[INFO]	2026-02-24T12:36:11.240Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936572833,"[INFO]	2026-02-24T12:36:12.832Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936574504,"[INFO]	2026-02-24T12:36:14.504Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936576134,"[INFO]	2026-02-24T12:36:16.134Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936577762,"[INFO]	2026-02-24T12:36:17.762Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936579373,"[INFO]	2026-02-24T12:36:19.373Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936580946,"[INFO]	2026-02-24T12:36:20.945Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936582538,"[INFO]	2026-02-24T12:36:22.538Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936584141,"[INFO]	2026-02-24T12:36:24.141Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936585731,"[INFO]	2026-02-24T12:36:25.731Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936587295,"[INFO]	2026-02-24T12:36:27.295Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936588874,"[INFO]	2026-02-24T12:36:28.874Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936590432,"[INFO]	2026-02-24T12:36:30.432Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936591992,"[INFO]	2026-02-24T12:36:31.992Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936593563,"[INFO]	2026-02-24T12:36:33.563Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936595117,"[INFO]	2026-02-24T12:36:35.116Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936596671,"[INFO]	2026-02-24T12:36:36.671Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936598259,"[INFO]	2026-02-24T12:36:38.259Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936599839,"[INFO]	2026-02-24T12:36:39.839Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936601494,"[INFO]	2026-02-24T12:36:41.494Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936603298,"[INFO]	2026-02-24T12:36:43.298Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936604871,"[INFO]	2026-02-24T12:36:44.870Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936606644,"[INFO]	2026-02-24T12:36:46.644Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936608173,"[INFO]	2026-02-24T12:36:48.173Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936609739,"[INFO]	2026-02-24T12:36:49.739Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936611292,"[INFO]	2026-02-24T12:36:51.292Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936612858,"[INFO]	2026-02-24T12:36:52.858Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936614480,"[INFO]	2026-02-24T12:36:54.480Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936616039,"[INFO]	2026-02-24T12:36:56.039Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 1000 rows
+"
+1771936616755,"[INFO]	2026-02-24T12:36:56.755Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Committed batch of 453 rows
+"
+1771936616760,"[INFO]	2026-02-24T12:36:56.760Z	14499b46-3b6c-44df-8543-ae56624497f3	💾 Saved 96453 rows to database
+"

@@ -1,0 +1,2 @@
+source_file,sensor_type,min_temperature,max_temperature,avg_temperature,stddev_temperature,min_humidity,max_humidity,avg_humidity,record_count,calculation_date
+incoming/weather.csv,temperature_humidity,-21.822222222222223,39.90555555555555,11.93267843751188,9.551546320657026,0.0,1.0,0.7348989663359357,96453,2026-02-24
