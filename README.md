@@ -126,7 +126,7 @@ Test File: weather.csv (\~96,453 rows)
     -   quarantine/
     -   aggregates/
   
-![S3 Files](https://github.com/Sourya2000/Weather_Sensor_Pipeline_AWS/files_sensor_pipeline.PNG?raw=true)
+![S3 Files](files_sensor_pipeline.PNG?raw=true)
 
 
 3.  Enable Event Notification on the incoming/ prefix:
@@ -147,7 +147,7 @@ Test File: weather.csv (\~96,453 rows)
     -   Copy the RDS endpoint
     -   Run schema.sql to create tables
   
-![RDS Connection](https://github.com/Sourya2000/Weather_Sensor_Pipeline_AWS/rds_insertion.PNG?raw=true)
+![RDS Connection](rds_insertion.PNG?raw=true)
 
 
 ### Step 3: Configure VPC & Networking
