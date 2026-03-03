@@ -125,6 +125,10 @@ Test File: weather.csv (\~96,453 rows)
     -   processed/
     -   quarantine/
     -   aggregates/
+  
+![S3 Files](https://github.com/Sourya2000/Weather_Sensor_Pipeline_AWS/blob/main/images/files_sensor_pipeline.PNG?raw=true)
+
+
 3.  Enable Event Notification on the incoming/ prefix:
     -   Event type: Object Created (All)
     -   Destination: Lambda function
@@ -142,6 +146,9 @@ Test File: weather.csv (\~96,453 rows)
 7.  After creation:
     -   Copy the RDS endpoint
     -   Run schema.sql to create tables
+  
+![RDS Connection](https://github.com/Sourya2000/Weather_Sensor_Pipeline_AWS/blob/main/images/rds_insertion.PNG?raw=true)
+
 
 ### Step 3: Configure VPC & Networking
 
