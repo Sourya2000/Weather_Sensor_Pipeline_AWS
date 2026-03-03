@@ -1,7 +1,7 @@
 # 🌦 Weather Sensor Pipeline on AWS
 
 A fully automated, serverless data engineering pipeline built on AWS to
-process weather sensor CSV files in real time.
+process large weather sensor CSV files in real time.
 
 This project monitors an Amazon S3 bucket for incoming files, validates
 and transforms data using AWS Lambda, calculates statistical aggregates,
