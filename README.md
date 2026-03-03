@@ -74,12 +74,10 @@ data/ └── lambda_package/
 
 Three PostgreSQL tables are implemented:
 
-1.  raw_sensor_data -- Stores validated sensor readings\
-2.  sensor_aggregates -- Stores per-file statistics\
-3.  quarantine_log -- Stores invalid rows with error details
+1.  raw_sensor_data --- Stores validated sensor readings\
+2.  sensor_aggregates --- Stores per-file statistics\
+3.  quarantine_log --- Stores invalid rows with error details
 
-   
-![RDS access locally ](rds_insertion.PNG)
 ------------------------------------------------------------------------
 
 # 🔄 Data Processing Workflow
@@ -93,10 +91,6 @@ Three PostgreSQL tables are implemented:
 7.  File archived to processed/
 8.  Notification sent via SQS
 
-
-
-
-![S3 files after lambda function called](files_sensor_pipeline.PNG)
 ------------------------------------------------------------------------
 
 # 📊 Performance Metrics
@@ -121,25 +115,90 @@ Test File: weather.csv (\~96,453 rows)
 
 # ⚙ Setup Instructions
 
-## Local Setup
+## 1️⃣ AWS Infrastructure Setup
 
-# Clone the repo
+### Step 1: Create S3 Bucket
+
+1.  Create an S3 bucket.
+2.  Inside the bucket, create folders:
+    -   incoming/
+    -   processed/
+    -   quarantine/
+    -   aggregates/
+3.  Enable Event Notification on the incoming/ prefix:
+    -   Event type: Object Created (All)
+    -   Destination: Lambda function
+
+### Step 2: Create RDS PostgreSQL Instance
+
+1.  Go to RDS → Create Database.
+2.  Choose PostgreSQL.
+3.  Select Free Tier (for testing) or appropriate instance type.
+4.  Disable Public Access (recommended).
+5.  Place RDS inside a VPC.
+6.  Configure Security Group:
+    -   Allow inbound TCP 5432
+    -   Source: Lambda security group
+7.  After creation:
+    -   Copy the RDS endpoint
+    -   Run schema.sql to create tables
+
+### Step 3: Configure VPC & Networking
+
+1.  Ensure VPC has at least two private subnets.
+2.  Create a VPC Gateway Endpoint for S3:
+    -   Service: com.amazonaws.`<region>`{=html}.s3
+    -   Attach to your VPC
+    -   Associate with Lambda subnet route tables
+
+This allows Lambda to access S3 privately without requiring a NAT
+Gateway.
+
+### Step 4: Create Lambda Function
+
+1.  Create a new Lambda function (Python 3.12).
+2.  Upload:
+    -   lambda_function.py
+    -   Dependencies: Attach the necessary lambda package in permissions based on intergration with S3 and RDS
+3.  Configure:
+    -   Memory: 512 MB or higher
+    -   Timeout: 3--5 minutes
+4.  Enable VPC configuration:
+    -   Select same VPC as RDS
+    -   Choose private subnets
+    -   Attach Lambda security group
+5.  Add Environment Variables:
+    -   DB_HOST
+    -   DB_NAME
+    -   DB_USER
+    -   DB_PASSWORD
+    -   S3_BUCKET_NAME
+    -   SQS_QUEUE_URL
+6.  Attach IAM Role with permissions:
+    -   S3 read/write
+    -   RDS access
+    -   SQS send message
+    -   CloudWatch logging
+
+### Step 5: Create SQS Queue
+
+1.  Create Standard SQS Queue.
+2.  Copy Queue URL.
+3.  Add Queue URL to Lambda environment variables.
+4.  Allow Lambda IAM role to send messages.
+
+------------------------------------------------------------------------
+
+## 2️⃣ Local Setup
+
+``` bash
 git clone https://github.com/Sourya2000/Weather_Sensor_Pipeline_AWS.git
-
-# Navigate into the project
 cd Weather_Sensor_Pipeline_AWS
-
-# Install Python dependencies
 pip install -r requirements.txt
-
-# Create a local data directory
 mkdir data
-
-# Copy your CSV file into the local data folder
 cp weather.csv data/
-
-# Run the file watcher
 python file_watcher.py
+```
 
 ------------------------------------------------------------------------
 
